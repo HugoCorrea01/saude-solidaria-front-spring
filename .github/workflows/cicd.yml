@@ -12,7 +12,7 @@ on:
 
 env:
   REGISTRY: ghcr.io
-  IMAGE_NAME: ${{ github.repository }}
+  IMAGE_NAME: HugoCorrea01/saude-solidaria-front-spring
 
 jobs:
   # ==========================================================
@@ -35,7 +35,7 @@ jobs:
             echo "❌ ERRO: GHCR_TOKEN está vazio."
             exit 1
           fi
-          echo "${{ secrets.GHCR_TOKEN }}" | docker login ghcr.io -u ${{ github.actor }} --password-stdin
+          echo "${{ secrets.GHCR_TOKEN }}" | docker login ghcr.io -u HugoCorrea01 --password-stdin
 
       - name: 🏷️ Extrair metadados da imagem
         id: meta
@@ -72,11 +72,7 @@ jobs:
           key: ${{ secrets.STAGING_SSH_KEY }}
           script: |
             echo "🚀 Iniciando deploy no servidor STAGING..."
-            if [ -z "${{ secrets.GHCR_TOKEN }}" ]; then
-              echo "❌ ERRO: GHCR_TOKEN está vazio."
-              exit 1
-            fi
-            docker login ${{ env.REGISTRY }} -u ${{ github.actor }} -p ${{ secrets.GHCR_TOKEN }}
+            echo "${{ secrets.GHCR_TOKEN }}" | docker login ghcr.io -u HugoCorrea01 --password-stdin
             cd /opt/saude-solidaria-front-spring
             docker compose -f docker-compose.staging.yml pull
             docker compose -f docker-compose.staging.yml up -d
@@ -101,11 +97,7 @@ jobs:
           key: ${{ secrets.PROD_SSH_KEY }}
           script: |
             echo "🚀 Iniciando deploy no servidor PRODUÇÃO..."
-            if [ -z "${{ secrets.GHCR_TOKEN }}" ]; then
-              echo "❌ ERRO: GHCR_TOKEN está vazio."
-              exit 1
-            fi
-            docker login ${{ env.REGISTRY }} -u ${{ github.actor }} -p ${{ secrets.GHCR_TOKEN }}
+            echo "${{ secrets.GHCR_TOKEN }}" | docker login ghcr.io -u HugoCorrea01 --password-stdin
             cd /opt/saude-solidaria-front-spring
             docker compose -f docker-compose.prod.yml pull
             docker compose -f docker-compose.prod.yml up -d
