@@ -1,0 +1,34 @@
+services:
+  app:
+    build: .
+    container_name: saude-solidaria-local
+    ports:
+      - "8080:8080"
+    environment:
+      SPRING_PROFILES_ACTIVE: local
+      SPRING_DATA_MONGODB_URI: mongodb://mongo:27017/saude_solidaria
+    depends_on:
+      - mongo
+    networks:
+      - saude-network
+    restart: always
+    volumes:
+      - .:/app
+
+  mongo:
+    image: mongo:6
+    container_name: saude-solidaria-mongo
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongo_data:/data/db
+    networks:
+      - saude-network
+    restart: always
+
+volumes:
+  mongo_data:
+
+networks:
+  saude-network:
+    driver: bridge
