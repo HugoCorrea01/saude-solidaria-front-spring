@@ -6,4 +6,7 @@ services:
     env_file: .env.prod
     ports:
       - "8080:8080"
+    environment:
+      SPRING_PROFILES_ACTIVE: production
+      SPRING_DATA_MONGODB_URI: mongodb+srv://<user>:<pass>@<cluster>.mongodb.net/saude_solidaria
     restart: always
