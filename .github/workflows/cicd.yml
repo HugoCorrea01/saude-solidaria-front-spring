@@ -79,9 +79,9 @@ jobs:
             docker image prune -f
             echo "✅ Deploy STAGING finalizado!"
 
-  # ==========================================================
+  # =========================================================
   # 3️⃣ JOB: Deploy Produção (branch master)
-  # ==========================================================
+  # =========================================================
   deploy-production:
     if: github.ref == 'refs/heads/master'
     needs: docker
