@@ -1,0 +1,19 @@
+name: 🔐 Teste SSH - Staging
+
+on:
+  workflow_dispatch:   # Permite rodar manualmente
+
+jobs:
+  ssh-test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Verificar conexão SSH com servidor staging
+        uses: appleboy/ssh-action@v1.0.3
+        with:
+          host: ${{ secrets.STAGING_HOST }}
+          username: ${{ secrets.STAGING_USER }}
+          key: ${{ secrets.STAGING_SSH_KEY }}
+          script: |
+            echo "✅ Conectado com sucesso ao servidor $(hostname)"
+            uname -a
+            docker ps
