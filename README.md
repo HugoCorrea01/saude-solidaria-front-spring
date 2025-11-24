@@ -1,4 +1,4 @@
-# 🏥 Projeto – Saúde Solidária (DevOps + Java Spring Boot)
+# 🏥 Projeto – Saúde Solidária (DevOps + Java Spring Boot).
 
 O **Saúde Solidária** é uma aplicação que conecta **doadores** e **beneficiários** de medicamentos, promovendo solidariedade e eficiência na gestão de doações de forma digital.  
 Desenvolvido em **Java Spring Boot**, o projeto foi totalmente **containerizado** e automatizado com **CI/CD via GitHub Actions** e **deploy em servidores Ubuntu (Oracle Cloud)**.
@@ -120,3 +120,4 @@ Aplicação carregando dados em tempo real do **MongoDB Atlas**, confirmando int
 
 📍 FIAP – Análise e Desenvolvimento de Sistemas | Fase: DevOps & Cloud Computing  
 📅 Outubro / 2025
+
